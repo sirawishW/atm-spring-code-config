@@ -1,29 +1,28 @@
-package th.ac.ku.atm;
+package atm;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-
 public class ATMConfig {
 
     @Bean
-    public DataSource dataSource(){
-        return new DataSourceFile("customers.txt");
+    public DataSource dataSource() {
+        return new DataSourceFile("customer.txt");
     }
 
     @Bean
-    public Bank bank(){
+    public Bank bank() {
         return new Bank("Ku Bank", dataSource());
     }
 
     @Bean
-    public ATM atm(){
+    public ATM atm() {
         return new ATM(bank());
     }
 
     @Bean
-    public AtmUI atmUI(){
+    public AtmUI atmUI() {
         return new AtmUI(atm());
     }
 }
